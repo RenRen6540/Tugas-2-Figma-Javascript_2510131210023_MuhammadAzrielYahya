@@ -170,3 +170,21 @@ const toggleJeda = () => {
   $('btn-jeda').textContent = state.jeda ? 'Lanjut' : 'Jeda';
   $('papan').style.visibility = state.jeda ? 'hidden' : 'visible';  // Untuk mencegah curang saat jeda
 };
+
+/* Untuk menampilkan permainan, mencatat hewan yang ditemukan, serta menyimpan skor pemain ke papan skorasil Game */
+const selesai = (menang) => {
+  clearInterval(state.timer);
+  if (menang) state.skor += state.sisa * 5;      // bonus sisa waktu
+  $('judul-hasil').textContent = menang ? 'Selamat, semua pasangan ketemu!' : 'Waktu habis';
+  $('ringkasan-hasil').textContent = `${state.nama}, skormu ${state.skor} poin dalam ${state.langkah} langkah.`;
+  const ul = $('daftar-temuan');
+  ul.innerHTML = '';
+  state.ditemukan.forEach((h) => {
+    const li = document.createElement('li');
+    li.textContent = `${h.emoji} ${h.nama}`;
+    ul.appendChild(li);
+  });
+  simpanSkor({ nama: state.nama, skor: state.skor, level: state.level, langkah: state.langkah });
+  tabSkor = state.level; renderSkor();
+  setTimeout(() => tampilLayar('hasil'), menang ? 700 : 0);
+};
