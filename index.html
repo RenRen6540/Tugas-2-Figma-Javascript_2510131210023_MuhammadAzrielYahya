@@ -40,10 +40,11 @@
     <!-- Membuat layar 2 yaitu tampilan game -->
     <section id="layar-game" class="layar" aria-labelledby="judul-game">
       <h2 id="judul-game" class="sr-only">Papan permainan</h2>
-      <div><span>Waktu</span></div>
-      <div><span>Langkah</span></div>
-      <div><span>Skor</span></div>
-      <div><span>Kombo</span></div>
+      <div class="hud" aria-live="polite">
+        <div><span>Waktu</span><strong id="hud-waktu">0</strong></div>
+        <div><span>Langkah</span><strong id="hud-langkah">0</strong></div>
+        <div><span>Skor</span><strong id="hud-skor">0</strong></div>
+        <div><span>Kombo</span><strong id="hud-kombo">x0</strong></div>
       <button id="btn-bantuan" class="btn">Intip kartu(2)</button>
       <button id="btn-jeda" class="btn">Jeda</button>
       <button id="btn-ulang" class="btn">Ulang</button>
