@@ -49,3 +49,18 @@ fieldset { border: 0; padding: 0; margin: 0 0 var(--s2); }
 .hud strong { font-size: 1.5rem; }
 .hud .urgent strong { color: var(--karang); }
 .kontrol { display: flex; gap: var(--s1); flex-wrap: wrap; }
+
+/* Untuk papan dan kartu */
+.papan { display: grid; grid-template-columns: repeat(var(--kolom, 4), 1fr); gap: var(--s1); }
+.kartu { aspect-ratio: 3/4; perspective: 600px; border: 0; background: none; padding: 0; cursor: pointer; }
+.kartu-dalam { position: relative; width: 100%; height: 100%; transition: transform .45s; transform-style: preserve-3d; }
+.kartu.terbuka .kartu-dalam, .kartu.cocok .kartu-dalam { transform: rotateY(180deg); }
+.sisi { position: absolute; inset: 0; backface-visibility: hidden; border-radius: var(--r); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.belakang { background: var(--tinta) repeating-conic-gradient(from 45deg, var(--teal) 0 25%, var(--tinta) 0 50%) 0 0; border: 3px solid var(--kunyit); }
+.depan { background: var(--putih); border: 3px solid var(--teal); transform: rotateY(180deg); font-size: clamp(1.8rem, 7vw, 3rem); }
+.depan small { font-size: clamp(.6rem, 2vw, .85rem); font-weight: 600; }
+.kartu.cocok .depan { background: var(--kunyit); border-color: var(--tinta); }
+.kartu.intip .kartu-dalam { transform: rotateY(180deg); }
+.fakta { min-height: 3em; padding: var(--s2); background: var(--tinta); color: var(--putih); border-radius: var(--r); }
+.temuan { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--s1); }
+.temuan li { background: var(--kain); border-radius: 10px; padding: var(--s1) var(--s2); }
