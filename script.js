@@ -199,3 +199,6 @@ $('btn-main-lagi').addEventListener('click', mulaiGame);
 $('btn-ke-menu').addEventListener('click', () => { renderMenu(); tampilLayar('menu'); });
 document.querySelector('[data-layar="menu"]').addEventListener('click', () => { renderMenu(); tampilLayar('menu'); });
 $('btn-nav-skor').addEventListener('click', () => { renderMenu(); tampilLayar('menu'); $('tab-skor').scrollIntoView({ behavior: 'smooth' }); });
+
+muatSkor();
+renderMenu();
