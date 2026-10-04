@@ -44,3 +44,40 @@ const tampilLayar = (nama) => {
   document.querySelectorAll('.layar').forEach((el) => el.classList.toggle('aktif', el.id === `layar-${nama}`));
   if (nama !== 'game') clearInterval(state.timer);
 };
+
+/* Membuat localstorage untuk menu dan papan skor */
+const muatSkor = () => {
+  try { papanSkor = JSON.parse(localStorage.getItem(KUNCI_SKOR)) || []; } catch { papanSkor = []; }
+};
+const simpanSkor = (entri) => {
+  papanSkor.push(entri);
+  try { localStorage.setItem(KUNCI_SKOR, JSON.stringify(papanSkor)); } catch { /* abaikan */ }
+};
+const renderSkor = () => {
+  const ol = $('daftar-skor');
+  const data = papanSkor.filter((s) => s.level === tabSkor).sort((a, b) => b.skor - a.skor).slice(0, 5);
+  ol.innerHTML = '';
+  if (data.length === 0) { ol.innerHTML = '<li>Belum ada skor. Jadilah yang pertama!</li>'; return; }
+  data.forEach((s) => {   // perulangan untuk membuat elemen DOM
+    const li = document.createElement('li');
+    li.textContent = `${s.nama}: ${s.skor} poin (${s.langkah} langkah)`;
+    ol.appendChild(li);
+  });
+};
+const renderMenu = () => {
+  const grup = $('level-grup'), tab = $('tab-skor');
+  grup.innerHTML = ''; tab.innerHTML = '';
+  Object.entries(LEVEL).forEach(([kode, l]) => {
+    const b = document.createElement('button');
+    b.innerHTML = `${l.label}<small>${l.pasang} pasang, ${l.waktu} dtk</small>`;
+    b.setAttribute('aria-pressed', kode === state.level);
+    b.addEventListener('click', () => { state.level = kode; renderMenu(); });
+    grup.appendChild(b);
+    const t = document.createElement('button');
+    t.textContent = l.label;
+    t.setAttribute('role', 'tab'); t.setAttribute('aria-selected', kode === tabSkor);
+    t.addEventListener('click', () => { tabSkor = kode; renderMenu(); });
+    tab.appendChild(t);
+  });
+  renderSkor();
+};
