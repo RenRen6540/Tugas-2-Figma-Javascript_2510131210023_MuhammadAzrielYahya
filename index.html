@@ -25,11 +25,15 @@
         <input id="input-nama" type="text" maxlength="14" placeholder="Contoh: Yahya" autocomplete="off">
         <fieldset>
           <legend>Pilih tingkat</legend>
+          <div class="level-grup" id="level-grup"></div>
         </fieldset>
-        <button id="btn-mulai">Mulai main!</button>
+        <p id"pesan-menu" class="pesan" role="alert"></p>
+        <button id="btn-mulai" class="btn utama">Mulai main!</button>
       </article>
       <article class="panel">
         <h2>Skor tertinggi</h2>
+        <div class="tab-grup id="tab-skor" role="tablist"></div>
+        <ol id="daftar-skor" class="daftar-skor"></ol>
       </article>
     </section>
 
@@ -40,9 +44,9 @@
       <div><span>Langkah</span></div>
       <div><span>Skor</span></div>
       <div><span>Kombo</span></div>
-      <button>Intip kartu(2)</button>
-      <button>Jeda</button>
-      <button>Ulang</button>
+      <button id="btn-bantuan" class="btn">Intip kartu(2)</button>
+      <button id="btn-jeda" class="btn">Jeda</button>
+      <button id="btn-ulang" class="btn">Ulang</button>
     </section>
 
     <!-- Membuat layar 3 yaitu tampilan setelah selesai bermain atau hasil -->
@@ -51,8 +55,8 @@
         <h3>Hewan yang kamu temukan</h3>
         <ul id="daftar-temuan"></ul>
         <div>
-          <button id="btn-main-lagi">Main lagi</button>
-          <button id="btn-ke-menu">Ke menu</button>
+          <button id="btn-main-lagi" class="btn utama">Main lagi</button>
+          <button id="btn-ke-menu" class="btn">Ke menu</button>
         </div>
       </article>
     </section>
