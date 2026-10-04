@@ -45,17 +45,22 @@
         <div><span>Langkah</span><strong id="hud-langkah">0</strong></div>
         <div><span>Skor</span><strong id="hud-skor">0</strong></div>
         <div><span>Kombo</span><strong id="hud-kombo">x0</strong></div>
-      <button id="btn-bantuan" class="btn">Intip kartu(2)</button>
-      <button id="btn-jeda" class="btn">Jeda</button>
-      <button id="btn-ulang" class="btn">Ulang</button>
+      </div>
+      <div class="kontrol">
+        <button id="btn-bantuan" class="btn">Intip kartu(2)</button>
+        <button id="btn-jeda" class="btn">Jeda</button>
+        <button id="btn-ulang" class="btn">Ulang</button>
+      </div>
+      <div id="papan" class"papan"></div>
+      <aside id="fakta" class="fakta" role="status"></aside>
     </section>
 
     <!-- Membuat layar 3 yaitu tampilan setelah selesai bermain atau hasil -->
     <section id="layar-hasil" class="layar" aria-labelledby="judul-hasil">
       <article class="panel">
         <h3>Hewan yang kamu temukan</h3>
-        <ul id="daftar-temuan"></ul>
-        <div>
+        <ul id="daftar-temuan" class="temuan"></ul>
+        <div class="kontrol">
           <button id="btn-main-lagi" class="btn utama">Main lagi</button>
           <button id="btn-ke-menu" class="btn">Ke menu</button>
         </div>
