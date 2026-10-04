@@ -11,7 +11,7 @@ body { margin: 0; font-family: var(--font); background: var(--kain); color: var(
 :focus-visible { outline: 3px solid var(--kunyit); outline-offset: 2px; }
 
 /* Untuk header dan footer */
-.header { display: flex; justify-content: space-between; align-items: center; flex-warp; gap: var(--s1);
+.header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--s1);
   padding: var(--s2) var(--s3); background: var(--tinta); color: var(--putih); }
 .brand { margin: 0; font-size: 1.8rem; font-weight: 800; color: var(--kunyit); }
 .nav-btn { background: none; border: 0; color: var(--putih); font: inherit; padding: var(--s1) var(--s2); cursor: pointer; border-radius: 999px; }
