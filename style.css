@@ -64,3 +64,8 @@ fieldset { border: 0; padding: 0; margin: 0 0 var(--s2); }
 .fakta { min-height: 3em; padding: var(--s2); background: var(--tinta); color: var(--putih); border-radius: var(--r); }
 .temuan { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--s1); }
 .temuan li { background: var(--kain); border-radius: 10px; padding: var(--s1) var(--s2); }
+
+/* Agar responsif di mobile dan desktop */
+@media (min-width: 640px) { .papan { gap: var(--s2); max-width: 640px; margin: 0 auto; width: 100%; } }
+@media (min-width: 900px) { #layar-menu.aktif { grid-template-columns: 1fr 1fr; align-items: start; } .papan { max-width: 760px; } }
+@media (prefers-reduced-motion: reduce) { .kartu-dalam { transition: none; } }
