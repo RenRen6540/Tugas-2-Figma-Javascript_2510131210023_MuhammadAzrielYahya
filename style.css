@@ -7,5 +7,5 @@
 }
 *, *::before, *::after { box-sizing: border-box; }
 body { margin: 0; font-family: var(--font); background: var(--kain); color: var(--tinta); line-height: 1.5; }
-.sr-only { position: absoulute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 :focus-visible { outline: 3px solid var(--kunyit); outline-offset: 2px; }
