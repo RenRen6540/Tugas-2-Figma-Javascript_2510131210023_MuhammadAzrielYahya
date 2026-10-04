@@ -188,3 +188,14 @@ const selesai = (menang) => {
   tabSkor = state.level; renderSkor();
   setTimeout(() => tampilLayar('hasil'), menang ? 700 : 0);
 };
+
+/* Membuat event listener */
+$('btn-mulai').addEventListener('click', mulaiGame);
+$('input-nama').addEventListener('keydown', (e) => { if (e.key === 'Enter') mulaiGame(); });
+$('btn-bantuan').addEventListener('click', intip);
+$('btn-jeda').addEventListener('click', toggleJeda);
+$('btn-ulang').addEventListener('click', mulaiGame);
+$('btn-main-lagi').addEventListener('click', mulaiGame);
+$('btn-ke-menu').addEventListener('click', () => { renderMenu(); tampilLayar('menu'); });
+document.querySelector('[data-layar="menu"]').addEventListener('click', () => { renderMenu(); tampilLayar('menu'); });
+$('btn-nav-skor').addEventListener('click', () => { renderMenu(); tampilLayar('menu'); $('tab-skor').scrollIntoView({ behavior: 'smooth' }); });
