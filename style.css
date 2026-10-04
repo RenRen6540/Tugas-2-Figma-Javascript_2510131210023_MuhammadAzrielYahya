@@ -41,3 +41,11 @@ fieldset { border: 0; padding: 0; margin: 0 0 var(--s2); }
 .pesan { color: var(--karang); min-height: 1.5em; margin: 0 0 var(--s1); }
 .daftar-skor { padding-left: var(--s3); margin: var(--s2) 0 0; }
 .daftar-skor li { padding: 4px 0; }
+
+/* Untuk HUD */
+.hud { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s1); }
+.hud div { background: var(--putih); border-radius: var(--r); padding: var(--s1) var(--s2); text-align: center; }
+.hud span { display: block; font-size: .85rem; opacity: .7; }
+.hud strong { font-size: 1.5rem; }
+.hud .urgent strong { color: var(--karang); }
+.kontrol { display: flex; gap: var(--s1); flex-wrap: wrap; }
