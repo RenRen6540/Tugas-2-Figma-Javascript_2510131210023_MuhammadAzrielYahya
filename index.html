@@ -17,9 +17,9 @@
 
   <main>
     <!-- Membuat layar 1 yaitu Menu -->
-    <section>
-      <article>
-        <h2>Samakan pasangan hewan Nusantara</h2>
+    <section id="layar-menu" class="layar aktif" aria-labelledby="judul-menu">
+      <article class="panel">
+        <h2 id="judul-menu">Samakan pasangan hewan Nusantara</h2>
         <p>Balik dua kartu, samakan hewannya, dan pelajari fakta setiap hewan.</p>
         <label for="input-nama">Nama pemain</label>
         <input id="input-nama" type="text" maxlength="14" placeholder="Contoh: Yahya" autocomplete="off">
@@ -28,14 +28,14 @@
         </fieldset>
         <button id="btn-mulai">Mulai main!</button>
       </article>
-      <article>
+      <article class="panel">
         <h2>Skor tertinggi</h2>
       </article>
     </section>
 
     <!-- Membuat layar 2 yaitu tampilan game -->
-    <section>
-      <h2>Papan permainan</h2>
+    <section id="layar-game" class="layar" aria-labelledby="judul-game">
+      <h2 id="judul-game" class="sr-only">Papan permainan</h2>
       <div><span>Waktu</span></div>
       <div><span>Langkah</span></div>
       <div><span>Skor</span></div>
@@ -46,8 +46,8 @@
     </section>
 
     <!-- Membuat layar 3 yaitu tampilan setelah selesai bermain atau hasil -->
-    <section>
-      <article>
+    <section id="layar-hasil" class="layar" aria-labelledby="judul-hasil">
+      <article class="panel">
         <h3>Hewan yang kamu temukan</h3>
         <ul id="daftar-temuan"></ul>
         <div>
