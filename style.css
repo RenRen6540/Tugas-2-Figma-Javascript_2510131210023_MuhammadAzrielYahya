@@ -30,13 +30,13 @@ h2 { margin-top: 0; font-size: 1.5rem; }
 input[type=text] { width: 100%; padding: 12px; font: inherit; border: 2px solid var(--tinta); border-radius: 10px; margin-bottom: var(--s2); }
 fieldset { border: 0; padding: 0; margin: 0 0 var(--s2); }
 .level-grup, .tab-grup { display: flex; gap: var(--s1); flex-wrap: wrap; }
-.level-grup button, .tab-grup button { flex: 1; padding: 10px; font: inheirt; cursor: pointer; border: 2px solid var(--tinta); background: var(--putih); border-radius: 10px; }
+.level-grup button, .tab-grup button { flex: 1; padding: 10px; font: inherit; cursor: pointer; border: 2px solid var(--tinta); background: var(--putih); border-radius: 10px; }
 .level-grup button small { display: block; opacity: .7; }
 .level-grup button[aria-pressed=true], .tab-grup button[aria-selected=true] { background: var(--tinta); color: var(--putih); }
-.btn { font: inherit; font-weight: 600; padding: 10px 20px; border-radius: 999px; border: 2px solid var(--tinta); background: var(--putih); color: var(--tinta); cursur: pointer; }
+.btn { font: inherit; font-weight: 600; padding: 10px 20px; border-radius: 999px; border: 2px solid var(--tinta); background: var(--putih); color: var(--tinta); cursor: pointer; }
 .btn:hover:not(:disabled) { background: var(--kunyit); }
-.btn.utama { background: var(--teal); color: var(--putih); border-color: var(--teal); widht: 100%; padding: 14px; font-size: 1.1rem; }
+.btn.utama { background: var(--teal); color: var(--putih); border-color: var(--teal); width: 100%; padding: 14px; font-size: 1.1rem; }
 .btn:disabled { opacity: .45; cursor: not-allowed; }
 .pesan { color: var(--karang); min-height: 1.5em; margin: 0 0 var(--s1); }
-.daftar-skor { padding-left: var(--s3); margin: var(--s2) 0; }
-.daftar-skor li { pading: 4px 0; }
+.daftar-skor { padding-left: var(--s3); margin: var(--s2) 0 0; }
+.daftar-skor li { padding: 4px 0; }
