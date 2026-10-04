@@ -20,3 +20,12 @@ const LEVEL = {
   sulit: { label: 'Sulit', pasang: 12, kolom: 4, waktu: 120 }
 };
 const KUNCI_SKOR = 'cocok-fauna-skor';
+
+/* Membuat state untuk menyimpan informasi tentang keadaan game saat ini */
+const state = {
+  level: 'mudah', nama: '', kartu: [], terbuka: [], terkunci: false,
+  langkah: 0, ditemukan: [], skor: 0, kombo: 0, sisa: 0,
+  bantuan: 2, jeda: false, timer: null
+};
+let papanSkor = [];       // Array object: { nama, skor, level, langkah }
+let tabSkor = 'mudah';
