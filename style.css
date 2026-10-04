@@ -22,6 +22,6 @@ body { margin: 0; font-family: var(--font); background: var(--kain); color: var(
 main { max-width: 960px; margin: 0 auto; padding: var(--s3) var(--s2); }
 .layar { display: none; }
 .layar.aktif { display: grid; gap: var(--s3); }
-#layar-menu.aktif { grid-template-colums: 1fr; }
-.panel { background: var(--putih); broder-radius: var(--r); padding: var(--s3); box-shadow: 0 2px 0 rgba(20,33,61,.12); }
+#layar-menu.aktif { grid-template-columns: 1fr; }
+.panel { background: var(--putih); border-radius: var(--r); padding: var(--s3); box-shadow: 0 2px 0 rgba(20,33,61,.12); }
 h2 { margin-top: 0; font-size: 1.5rem; }
