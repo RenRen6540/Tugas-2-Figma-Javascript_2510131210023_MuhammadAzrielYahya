@@ -81,3 +81,77 @@ const renderMenu = () => {
   });
   renderSkor();
 };
+
+/* Membuat logika untuk game dan HUD */
+const mulaiGame = () => {
+  const nama = $('input-nama').value.trim();
+  if (!nama) { $('pesan-menu').textContent = 'Isi nama pemain dulu.'; $('input-nama').focus(); return; }
+  $('pesan-menu').textContent = '';
+  const cfg = LEVEL[state.level];
+  const pilihan = acak(HEWAN).slice(0, cfg.pasang);
+  // gandakan tiap hewan menjadi sepasang kartu, lalu acak
+  state.kartu = acak(pilihan.flatMap((h) => [{ ...h, uid: `${h.id}a` }, { ...h, uid: `${h.id}b` }]));
+  Object.assign(state, { nama, terbuka: [], terkunci: false, langkah: 0, ditemukan: [], skor: 0, kombo: 0, sisa: cfg.waktu, bantuan: 2, jeda: false });
+  $('papan').style.setProperty('--kolom', cfg.kolom);
+  $('fakta').textContent = 'Balik dua kartu untuk mulai.';
+  $('btn-jeda').textContent = 'Jeda';
+  renderPapan(); updateHUD(); tampilLayar('game');
+  clearInterval(state.timer);
+  state.timer = setInterval(tick, 1000);
+};
+const renderPapan = () => {
+  const papan = $('papan');
+  papan.innerHTML = '';
+  state.kartu.forEach((k) => {
+    const btn = document.createElement('button');
+    btn.className = 'kartu'; btn.dataset.uid = k.uid;
+    btn.setAttribute('aria-label', 'Kartu tertutup');
+    btn.innerHTML = `<div class="kartu-dalam"><div class="sisi belakang"></div><div class="sisi depan"><span>${k.emoji}</span><small>${k.nama}</small></div></div>`;
+    btn.addEventListener('click', () => balikKartu(btn, k));
+    papan.appendChild(btn);
+  });
+};
+const balikKartu = (el, k) => {
+  if (state.terkunci || state.jeda) return;
+  if (el.classList.contains('terbuka') || el.classList.contains('cocok')) return;
+  el.classList.add('terbuka');
+  el.setAttribute('aria-label', `Kartu ${k.nama}`);
+  state.terbuka.push({ el, k });
+  if (state.terbuka.length === 2) { state.langkah++; cekPasangan(); }
+  updateHUD();
+};
+const cekPasangan = () => {
+  const [a, b] = state.terbuka;
+  state.terkunci = true;
+  if (a.k.id === b.k.id) {                       // percabangan: cocok
+    state.kombo++;
+    state.skor += 100 + (state.kombo - 1) * 50;  // bonus kombo
+    state.ditemukan.push(a.k);
+    [a, b].forEach((x) => { x.el.classList.remove('terbuka'); x.el.classList.add('cocok'); x.el.disabled = true; });
+    $('fakta').textContent = `${a.k.emoji} ${a.k.nama}: ${a.k.fakta}`;
+    state.terbuka = []; state.terkunci = false;
+    if (state.ditemukan.length === LEVEL[state.level].pasang) selesai(true);
+  } else {                                       // tidak cocok
+    state.kombo = 0;
+    state.skor = Math.max(0, state.skor - 10);
+    setTimeout(() => {
+      [a, b].forEach((x) => { x.el.classList.remove('terbuka'); x.el.setAttribute('aria-label', 'Kartu tertutup'); });
+      state.terbuka = []; state.terkunci = false; updateHUD();
+    }, 800);
+  }
+};
+const tick = () => {
+  if (state.jeda) return;
+  state.sisa--;
+  updateHUD();
+  if (state.sisa <= 0) selesai(false);
+};
+const updateHUD = () => {
+  $('hud-waktu').textContent = state.sisa;
+  $('hud-langkah').textContent = state.langkah;
+  $('hud-skor').textContent = state.skor;
+  $('hud-kombo').textContent = `x${state.kombo}`;
+  $('hud-waktu').parentElement.classList.toggle('urgent', state.sisa <= 10);
+  $('btn-bantuan').textContent = `Intip kartu (${state.bantuan})`;
+  $('btn-bantuan').disabled = state.bantuan === 0;
+};
