@@ -155,3 +155,18 @@ const updateHUD = () => {
   $('btn-bantuan').textContent = `Intip kartu (${state.bantuan})`;
   $('btn-bantuan').disabled = state.bantuan === 0;
 };
+
+/* Untuk fitur intip dan jeda */
+const intip = () => {
+  if (state.bantuan === 0 || state.terkunci || state.jeda) return;
+  state.bantuan--; state.skor = Math.max(0, state.skor - 30); state.terkunci = true;
+  const semua = document.querySelectorAll('.kartu:not(.cocok)');
+  semua.forEach((el) => el.classList.add('intip'));
+  setTimeout(() => { semua.forEach((el) => el.classList.remove('intip')); state.terkunci = false; }, 1200);
+  updateHUD();
+};
+const toggleJeda = () => {
+  state.jeda = !state.jeda;
+  $('btn-jeda').textContent = state.jeda ? 'Lanjut' : 'Jeda';
+  $('papan').style.visibility = state.jeda ? 'hidden' : 'visible';  // Untuk mencegah curang saat jeda
+};
