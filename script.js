@@ -29,3 +29,18 @@ const state = {
 };
 let papanSkor = [];       // Array object: { nama, skor, level, langkah }
 let tabSkor = 'mudah';
+
+/* Membuat helper untuk kumpulan fungsi pendukung */
+const $ = (id) => document.getElementById(id);
+const acak = (arr) => {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
+const tampilLayar = (nama) => {
+  document.querySelectorAll('.layar').forEach((el) => el.classList.toggle('aktif', el.id === `layar-${nama}`));
+  if (nama !== 'game') clearInterval(state.timer);
+};
